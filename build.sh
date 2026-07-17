@@ -1,3 +1,5 @@
+#!/bin/bash
+
 javac -d bin src/Board/*.java src/Game/*.java src/UI/*.java src/Main.java
 
-start javaw -cp bin Main
+java -cp bin Main &
