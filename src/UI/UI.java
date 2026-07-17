@@ -40,6 +40,23 @@ public class UI extends JFrame
 
         setLocationRelativeTo(null);
         setVisible(true);
+
+        String RedName = JOptionPane.showInputDialog(
+            null, 
+            "Enter Name for Red Player:", 
+            "Player Registration", 
+            JOptionPane.QUESTION_MESSAGE
+        );
+
+        String WhiteName = JOptionPane.showInputDialog(
+            null, 
+            "Enter Name for White Player:", 
+            "Player Registration", 
+            JOptionPane.QUESTION_MESSAGE
+        );
+
+        this.Game.GetPlayers()[0].SetPlayerID(RedName);
+        this.Game.GetPlayers()[1].SetPlayerID(WhiteName);
     }
 
     public void Update() 
@@ -273,7 +290,7 @@ public class UI extends JFrame
                     {
                         SoundManager.Play("click.wav");
                     }
-                    
+
                     Update();
                 }
                 

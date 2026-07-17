@@ -12,8 +12,8 @@ public class Game
         b = new Board();
         b.SetupBoard();
 
-        players[0] = new Player("Farivar", 0); //Red
-        players[1] = new Player("Farsian", 1); //White
+        players[0] = new Player(0); //Red
+        players[1] = new Player(1); //White
 
         currentPlayer = players[0]; //It's red's turn to play first
 
