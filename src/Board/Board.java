@@ -1,6 +1,7 @@
 package Board;
 
 import Game.Player;
+import UI.SoundManager;
 
 public class Board
 {
@@ -117,6 +118,8 @@ public class Board
             {
                 WhitePieceCount--;
             }
+
+            SoundManager.Play("take.wav");
         }
 
         // Moving the piece
@@ -130,11 +133,13 @@ public class Board
         {
             board[Dest_X][Dest_Y].SetStatus(Status.KING_PIECE_RED);
             IsPromoted = true;
+            SoundManager.Play("promotion.wav");
         } 
         else if (ActivePlayerColor == 1 && Dest_X == 7 && Start_statustile == Status.NORMAL_PIECE_WHITE) 
         {
             board[Dest_X][Dest_Y].SetStatus(Status.KING_PIECE_WHITE);
             IsPromoted = true;
+            SoundManager.Play("promotion.wav");
         }
 
         // 7-Double Jump Validation

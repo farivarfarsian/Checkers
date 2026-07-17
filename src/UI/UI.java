@@ -50,6 +50,7 @@ public class UI extends JFrame
 
         if (this.Game.IsGameOver() == true) 
         {
+            SoundManager.Play("success.wav");
             String Winner = "";
             if(CurrentPlayerColor == 1)
             {
@@ -265,18 +266,23 @@ public class UI extends JFrame
                 // Execute the backend engine move
                 boolean IsMoveLegal = Game.Move(DragStartX, DragStartY, DestX, DestY);
 
+                // Update UI
+                if (IsMoveLegal) 
+                {
+                    if((Math.abs(DragStartX - DestX) == 2) == false)
+                    {
+                        SoundManager.Play("click.wav");
+                    }
+                    
+                    Update();
+                }
+                
                 // Clear the drag states
                 DragStartX = -1;
                 DragStartY = -1;
                 DragPieceStatus = null;
                 DragPoint = null;
 
-                // Update UI
-                if (IsMoveLegal) 
-                {
-                    Update();
-                }
-                
                 repaint();
             }
         }
