@@ -39,7 +39,7 @@ Checkers/
 |   ├── RedNormal.png        # Red normal piece
 |   ├── RedKing.png          # Red king piece
 |   ├── WhiteNormal.png      # White normal piece
-|   └── WhiteKing.png        # White king piece
+|   ├── WhiteKing.png        # White king piece
 |   ├── sfx/                 # Sound effect files
 |       ├── click.wav
 |       ├── promotion.wav
@@ -52,14 +52,19 @@ Checkers/
 |   ├── Board/
 |   |   ├── Board.java       # Core board logic & state evaluation
 |   |   ├── Tile.java        # Data model representing individual squares
-|   |   └── Status.java      # Enum definitions (EMPTY, NORMAL_RED, etc.)
+|   |   ├── Status.java      # Enum definitions (EMPTY, NORMAL_RED, etc.)
 |   |
 |   ├── Game/
 |   |   ├── Game.java        # Player turn-swapping & move management
 |   |   └── Player.java      # Player state & profile data
 |   |
+|   ├── Effect/
+|   |   ├── Effect.java      # Effect handler for all kinds of effects
+|   |   ├── Confetti.java    # Confetti Effect
+|   |
 |   ├── UI/
-|   |   └── UI.java          # Main window, board panel, drag-and-drop
+|   |   ├── UI.java          # Main window, board panel, drag-and-drop
+|   |   ├── SoundManager.java # Sound Manager for playing sounds
 |   |
 |   └── Main.java            # App entry-point
 |
