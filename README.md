@@ -40,6 +40,11 @@ Checkers/
 |   ├── RedKing.png          # Red king piece
 |   ├── WhiteNormal.png      # White normal piece
 |   └── WhiteKing.png        # White king piece
+|   ├── sfx/                 # Sound effect files
+|       ├── click.wav
+|       ├── promotion.wav
+|       ├── success.wav
+|       ├── take.wav
 |
 ├── bin/                     # Java Byte Code files    
 |

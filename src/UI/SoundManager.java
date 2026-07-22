@@ -13,7 +13,7 @@ public class SoundManager
         {
             try 
             {
-                File File = new File("assets/" + FileName);
+                File File = new File("assets/sfx/" + FileName);
                 if (!File.exists()) return;
 
                 AudioInputStream AudioStream = AudioSystem.getAudioInputStream(File);

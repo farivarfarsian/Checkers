@@ -3,6 +3,7 @@ package UI;
 import Game.Game;
 import Board.Status;
 import Board.Tile;
+import Effect.Effect;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -28,6 +29,8 @@ public class UI extends JFrame
 
         // Setting Up the Board and Pieces
         BoardPanel = new BoardPanel();
+
+        this.Effect = new Effect(BoardPanel);
 
         // Setting the Default Text for Status Bar
         StatusLabel = new JLabel("Red's Turn", SwingConstants.CENTER);
@@ -68,17 +71,29 @@ public class UI extends JFrame
         if (this.Game.IsGameOver() == true) 
         {
             SoundManager.Play("success.wav");
-            String Winner = "";
-            if(CurrentPlayerColor == 1)
+            
+            this.Effect.Run(); // Confetti!
+
+            // Wait 700ms for better visuals
+            javax.swing.Timer DelayTimer = new javax.swing.Timer(700, e-> 
             {
-                Winner += "Red (Player " + this.Game.GetPlayers()[0].GetPlayerID() + ")";
-            }
-            else
-            {
-                Winner += "White (Player " + this.Game.GetPlayers()[1].GetPlayerID() + ")";        
-            }
-            StatusLabel.setText("Game Over! " + Winner + " wins!");
-            JOptionPane.showMessageDialog(this, "Game Over! " + Winner + " Wins!", "Match Ended", JOptionPane.INFORMATION_MESSAGE);
+                String Winner = "";
+                if (CurrentPlayerColor == 1)
+                {
+                    Winner += "Red (Player " + this.Game.GetPlayers()[0].GetPlayerID() + ")";
+                }
+                else
+                {
+                    Winner += "White (Player " + this.Game.GetPlayers()[1].GetPlayerID() + ")";
+                }
+
+                StatusLabel.setText("Game Over! " + Winner + " wins!");
+                JOptionPane.showMessageDialog(this, "Game Over! " + Winner + " Wins!", "Match Ended", JOptionPane.INFORMATION_MESSAGE);
+            });
+
+            DelayTimer.setRepeats(false);
+            DelayTimer.start();
+
             return;
         }
 
@@ -97,6 +112,9 @@ public class UI extends JFrame
        
     private final Game Game;
     private final BoardPanel BoardPanel;
+
+    // For Confetti Effect
+    private final Effect Effect;
 
     // For Bottom Status Label
     private final JLabel StatusLabel;
@@ -173,6 +191,8 @@ public class UI extends JFrame
                 // Center the cursor on Dragging Piece
                 DrawPiece(Graphics2D, DragPieceStatus, DragPoint.x - (TILE_SIZE / 2), DragPoint.y - (TILE_SIZE / 2));
             }
+
+            Effect.Render(Graphics2D);
         }
 
         private void DrawPiece(Graphics2D g, Status Status, int X, int Y) 
